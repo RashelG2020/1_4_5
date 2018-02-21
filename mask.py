@@ -35,7 +35,7 @@ def round_corners_one_image(original_image, percent_of_side=.3):
                             fill=(127,0,127,255))
 
     #Draw four filled circles of opaqueness
-    drawing_layer.ellipse((0,0, 2*radius, 2*radius), 
+    '''drawing_layer.ellipse((0,0, 2*radius, 2*radius), 
                             fill=(0,127,127,255)) #top left
     drawing_layer.ellipse((width-2*radius, 0, width,2*radius), 
                             fill=(0,127,127,255)) #top right
@@ -43,16 +43,16 @@ def round_corners_one_image(original_image, percent_of_side=.3):
                             fill=(0,127,127,255)) #bottom left
     drawing_layer.ellipse((width-2*radius, height-2*radius, width, height), 
                             fill=(0,127,127,255)) #bottom right
-                         
+    '''                     
     # Uncomment the following line to show the mask
-    # plt.imshow(rounded_mask)
+    plt.imshow(rounded_mask)
     
     # Make the new image, starting with all transparent
     result = PIL.Image.new('RGBA', original_image.size, (0,0,0,0))
     result.paste(original_image, (0,0), mask=rounded_mask)
     return result
     
-def get_images(directory=None):
+def get_images(directory= '1.4.5 Images'):
     """ Returns PIL.Image objects for all the images in directory.
     
     If directory is not specified, uses current directory.
@@ -61,7 +61,7 @@ def get_images(directory=None):
     a list with a string filename for each image file in root_directory
     """
     
-    if directory == None:
+    if directory == '1.4.5 Images':
         directory = os.getcwd() # Use working directory if unspecified
         
     image_list = [] # Initialize aggregaotrs
@@ -78,7 +78,7 @@ def get_images(directory=None):
             pass # do nothing with errors tying to open non-images
     return image_list, file_list
 
-def round_corners_of_all_images(directory=None):
+def round_corners_of_all_images(directory='1.4.5 Images'):
     """ Saves a modfied version of each image in directory.
     
     Uses current directory if no directory is specified. 
